@@ -1,0 +1,319 @@
+.brand-full {
+  display: inline;
+}
+
+.brand-short {
+  display: none;
+}
+
+@media (max-width: 576px) {
+  .brand-full {
+    display: none;
+  }
+  .brand-short {
+    display: inline;
+  }
+}
+
+.footer {
+  background: linear-gradient(45deg, hsl(211, 90%, 37%), hsl(211, 90%, 37%));
+  color: #fff;
+  padding: 10px 0;
+  text-align: center;
+  width: 100%;
+}
+
+.footer a {
+  color: #fff;
+  margin: 0 10px;
+  font-size: 18px;
+  transition: color 0.3s, transform 0.3s;
+}
+
+.footer a:hover {
+  color: #007bff;
+  transform: scale(1.1);
+}
+
+/* Add any specific styles for the chart here */
+#residencePieChart {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 50px;
+  position: relative;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Poppins", sans-serif;
+}
+.tabs {
+  display: flex;
+  position: relative;
+}
+.tabs .line {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 6px;
+  border-radius: 15px;
+  background-color: #007bff;
+  transition: all 0.2s ease;
+}
+.tab-item {
+  min-width: 80px;
+  padding: 8px 20px 6px 20px;
+  font-size: 20px;
+  text-align: center;
+  color: #495057;
+  background-color: #f8f9fa;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom: 5px solid transparent;
+  opacity: 0.8;
+  cursor: pointer;
+  transition: all 0.5s ease;
+}
+.tab-icon {
+  font-size: 24px;
+  width: 32px;
+  position: relative;
+  top: 2px;
+}
+.tab-item:hover {
+  opacity: 1;
+  background-color: rgb(37, 110, 188);
+  border-color: rgb(37, 110, 188);
+}
+.tab-item.active {
+  opacity: 1;
+  color: #fff;
+  background-color: #007bff;
+}
+.tab-content {
+  padding: 28px 0;
+  min-height: 600px;
+}
+.tab-pane {
+  color: #333;
+  display: none;
+}
+.tab-pane.active {
+  display: block;
+}
+.tab-pane h2 {
+  font-size: 24px;
+  margin-bottom: 8px;
+}
+
+/* Navbar Styles */
+.navbar {
+  background-color: #1b5fa2;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.navbar.scrolled {
+  background-color: #212529;
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+}
+
+.navbar .navbar-brand {
+  color: #fff;
+  font-weight: bold;
+}
+
+.navbar .navbar-brand:hover {
+  color: #e9ecef;
+}
+
+.navbar .nav-link {
+  color: #fff;
+  transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.navbar .nav-link:hover {
+  color: #007bff; /* Hover color similar to tabs */
+  background-color: rgba(255, 255, 255, 0.1); /* Light background on hover */
+}
+
+.navbar .nav-link.active {
+  color: #fff;
+  background-color: #007bff; /* Active color similar to tabs */
+}
+
+.navbar .dropdown-menu {
+  background-color: #343a40; /* Match navbar color */
+}
+
+.navbar .dropdown-item {
+  color: #fff;
+}
+
+.navbar .dropdown-item:hover {
+  background-color: #0056b3; /* Hover effect for dropdown items */
+}
+
+/* Tabs Styles */
+.nav-tabs .nav-link {
+  color: #fff;
+  background-color: #b3d7ff; /* Light blue for inactive tabs */
+  border: 1px solid #dee2e6;
+  border-radius: 0.25rem;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.nav-tabs .nav-link:hover {
+  background-color: #80bfff; /* Darker blue on hover */
+}
+
+.nav-tabs .nav-link.active {
+  color: #fff;
+  background-color: #007bff; /* Active tab color */
+  border-color: #007bff;
+}
+
+.nav-tabs .nav-link:not(.active) {
+  background-color: #cfe2ff; /* Lighter shade of active color for inactive tabs */
+}
+
+.tab-content {
+  padding: 28px 0;
+}
+
+.tab-pane {
+  color: #333;
+  display: none;
+}
+
+.tab-pane.active {
+  display: block;
+}
+
+/* Styles for the filter toggle button and panel */
+#filterPanel {
+  margin-bottom: 20px;
+}
+
+#filterPanel .form-control {
+  margin-bottom: 10px;
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  border-color: #6c757d;
+}
+
+.btn-secondary:hover {
+  background-color: #5a6268;
+  border-color: #545b62;
+}
+
+/* Center and style the residence title */
+.residence-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #007bff; /* Primary color */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.residence-title::after {
+  content: '';
+  display: block;
+  width: 50px;
+  height: 4px;
+  /* background-color: #007bff; */
+  margin: 10px auto 0;
+  border-radius: 2px;
+}
+
+/* Center and style the declaration title */
+.declaration-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #007bff; /* Primary color */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.declaration-title i {
+  margin-right: 10px; /* Space between icon and text */
+}
+
+/* Universal Title Styles */
+h1, h2, h3, h4, h5, h6, .brand-full{
+  text-transform: uppercase;
+}
+
+.btn-primary {
+  background: linear-gradient(45deg, #007bff, #0056b3);
+  border: none;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(45deg, #0056b3, #003f7f);
+  transform: scale(1.05);
+}
+
+.modal.fade .modal-dialog {
+  transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+  transform: translateY(-50px);
+  opacity: 0;
+}
+
+.modal.show .modal-dialog {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.fas {
+  color: #007bff; /* Màu xanh dương */
+  transition: color 0.3s ease;
+}
+
+.fas:hover {
+  color: #0056b3; /* Màu xanh dương đậm hơn khi hover */
+}
+
+.navbar-toggler {
+  border-color: rgba(255, 255, 255, 0.1); /* Màu viền nhạt hơn */
+  background-color: rgba(255, 255, 255, 0.2); /* Màu nền nhạt hơn */
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.navbar-toggler:hover {
+  background-color: rgba(255, 255, 255, 0.3); /* Màu nền khi hover */
+  border-color: rgba(255, 255, 255, 0.3); /* Màu viền khi hover */
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%28255, 255, 255, 0.7%29' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+/* Ensure the body and html take full height */
+html, body {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Main content should grow to fill the available space */
+.content {
+  flex: 1;
+}

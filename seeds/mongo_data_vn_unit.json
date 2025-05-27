@@ -1,0 +1,62 @@
+[
+  {
+    "unitId": "XA001",
+    "name": "UBND xã Phù Lãng",
+    "address": "Xã Phù Lãng, huyện Quế Võ, Bắc Ninh",
+    "phone": "02223881001"
+  },
+  {
+    "unitId": "XA002",
+    "name": "UBND xã Đại Xuân",
+    "address": "Xã Đại Xuân, huyện Quế Võ, Bắc Ninh",
+    "phone": "02223881002"
+  },
+  {
+    "unitId": "XA003",
+    "name": "UBND xã Nhân Hòa",
+    "address": "Xã Nhân Hòa, huyện Quế Võ, Bắc Ninh",
+    "phone": "02223881003"
+  },
+  {
+    "unitId": "XA004",
+    "name": "UBND xã Bồng Lai",
+    "address": "Xã Bồng Lai, huyện Quế Võ, Bắc Ninh",
+    "phone": "02223881004"
+  },
+  {
+    "unitId": "XA005",
+    "name": "UBND xã Cách Bi",
+    "address": "Xã Cách Bi, huyện Quế Võ, Bắc Ninh",
+    "phone": "02223881005"
+  },
+  {
+    "unitId": "XA006",
+    "name": "UBND xã Phù Lương",
+    "address": "Xã Phù Lương, huyện Quế Võ, Bắc Ninh",
+    "phone": "02223881006"
+  },
+  {
+    "unitId": "XA007",
+    "name": "UBND xã Việt Hùng",
+    "address": "Xã Việt Hùng, huyện Quế Võ, Bắc Ninh",
+    "phone": "02223881007"
+  },
+  {
+    "unitId": "XA008",
+    "name": "UBND xã Hán Quảng",
+    "address": "Xã Hán Quảng, huyện Quế Võ, Bắc Ninh",
+    "phone": "02223881008"
+  },
+  {
+    "unitId": "XA009",
+    "name": "UBND xã Ngọc Xá",
+    "address": "Xã Ngọc Xá, huyện Quế Võ, Bắc Ninh",
+    "phone": "02223881009"
+  },
+  {
+    "unitId": "XA010",
+    "name": "UBND xã Đức Long",
+    "address": "Xã Đức Long, huyện Quế Võ, Bắc Ninh",
+    "phone": "02223881010"
+  }
+]

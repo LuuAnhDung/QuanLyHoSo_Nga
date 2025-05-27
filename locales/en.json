@@ -1,0 +1,247 @@
+{
+	"404": {
+		"title": "Page Not Found",
+		"message": "The page you're looking for doesn't exist."
+	},
+	"login": {
+		"title": "Login to Your Account",
+		"username": "Username",
+		"username_placeholder": "Enter your username",
+		"password": "Password",
+		"password_placeholder": "Enter your password",
+		"submit": "Login",
+		"register_link": "Don't have an account? Register",
+		"forgot_password": "Forgot your password?"
+	},
+	"dashboard": {
+		"title": "Dashboard",
+		"manageResidences": {
+			"title": "Manage Residences",
+			"description": "View and manage all foreign residents.",
+			"button": "Go to Residences"
+		},
+		"manageCases": {
+			"title": "Manage Cases",
+			"description": "View and manage all Cases.",
+			"button": "Go to Cases"
+		},
+		"manageUsers": {
+			"title": "Manage Users",
+			"description": "Manage user accounts and access levels.",
+			"button": "Go to Users"
+		},
+		"generateReports": {
+			"title": "Generate Reports",
+			"description": "Create detailed reports for management.",
+			"button": "Generate Reports"
+		},
+		"manageAccommodations": {
+			"title": "Manage Accommodations",
+			"description": "View and manage all accommodations.",
+			"button": "Manage"
+		}
+	},
+	"declaration": {
+		"title": "Declaration Management",
+		"historyTab": "History",
+		"newDeclarationTab": "New Declaration",
+		"historyTitle": "Declaration History",
+		"noDeclarations": "No declarations found.",
+		"newDeclarationTitle": "New Declaration",
+		"fullNameLabel": "Full Name",
+		"nationalityLabel": "Nationality",
+		"accommodationLabel": "Accommodation",
+		"checkInLabel": "Check-in Date",
+		"checkOutLabel": "Check-out Date",
+		"reasonLabel": "Reason",
+		"dateFormat": "dd/mm/yyyy",
+		"submitButton": "Submit Declaration",
+		"name": "Name",
+		"accommodation": "Accommodation",
+		"checkIn": "Check-in Date",
+		"checkOut": "Check-out Date",
+		"status": "Status",
+		"detailTitle": "Declaration Details",
+		"closeButton": "Close"
+	},
+	"navbar": {
+		"brand": "Foreigners' Temporary Residence Management System in Hanoi",
+		"brandShort": "FTRMS",
+		"home": "Home",
+		"login": "Login",
+		"dashboard": "Dashboard",
+		"residences": "Residences",
+		"logout": "Logout",
+		"toggle": "Toggle navigation",
+		"language": "Language",
+		"profile": "Profile"
+	},
+	"siteTitle": "FTRMS Dashboard",
+	"errors": {
+		"userNotFound": "User not found",
+		"invalidPassword": "Invalid password",
+		"accessDenied": "Access denied. Admins or Managers only.",
+		"loginRequired": "Please log in to view this resource",
+		"serverError": "Something went wrong. Please try again."
+	},
+	"success": {
+		"login": "Welcome, {username}",
+		"logout": "You are logged out",
+		"registration": "You are now registered and can log in",
+		"declarationSubmitted": "Declaration submitted successfully."
+	},
+	"profile": {
+		"title": "Profile Information",
+		"username": "Username",
+		"email": "Email",
+		"phone": "Phone Number",
+		"officerId": "Officer ID",
+		"foreignDetails": {
+			"nationality": "Nationality",
+			"passportNumber": "Passport Number",
+			"visaType": "Visa Type",
+			"visaExpiryDate": "Visa Expiry Date"
+		}
+	},
+	"register": {
+		"title": "Register",
+		"username": "Username",
+		"email": "Email",
+		"phone": "Phone",
+		"password": "Password",
+		"confirmPassword": "Confirm Password",
+		"nationality": "Nationality",
+		"address": "Address",
+		"submit": "Register",
+		"alreadyHaveAccount": "Already have an account?",
+		"loginHere": "Login here"
+	},
+	"residences": {
+		"title": "Residence Management",
+		"filter": {
+			"toggle": "Toggle Filter",
+			"district": "District",
+			"ward": "Ward",
+			"submit": "Apply Filter",
+			"allDistricts": "All Districts",
+			"allWards": "All Wards"
+		},
+		"email": "Email",
+		"phone": "Phone",
+		"full_name": "Full Name",
+		"nationality": "Nationality",
+		"accommodation": "Accommodation",
+		"check_in": "Check-In Date",
+		"check_out": "Check-Out Date",
+		"reason": "Reason",
+		"declarationDate": "Declaration Date",
+		"status": "Status",
+		"statusPending": "Pending",
+		"statusApproved": "Approved",
+		"statusRejected": "Rejected",
+		"approve": "Approve",
+		"reject": "Reject"
+	},
+	"reports": {
+		"title": "User Declarations Report",
+		"filters": {
+			"userName": "User Name",
+			"nationality": "Nationality",
+			"dateFrom": "Date From",
+			"dateTo": "Date To",
+			"accommodation": "Accommodation",
+			"status": "Status",
+			"all": "All",
+			"pending": "Pending",
+			"approved": "Approved",
+			"rejected": "Rejected",
+			"button": "Filter"
+		},
+		"summary": {
+			"totalDeclarations": "Total Declarations",
+			"ongoingStays": "Ongoing Stays",
+			"completedStays": "Completed Stays"
+		},
+		"exportButton": "Export to Excel",
+		"table": {
+			"fullName": "Full Name",
+			"email": "Email",
+			"nationality": "Nationality",
+			"accommodation": "Accommodation",
+			"checkIn": "Check-In",
+			"checkOut": "Check-Out",
+			"stayDuration": "Stay Duration (days)",
+			"status": "Status",
+			"details": "Details",
+			"viewButton": "View"
+		}
+	},
+	"userManagement": {
+		"title": "User Management",
+		"manageUsersTab": "Manage Users",
+		"addUserTab": "Add User",
+		"table": {
+			"username": "Username",
+			"email": "Email",
+			"phone": "Phone",
+			"role": "Role",
+			"actions": "Actions",
+			"detailsButton": "Details"
+		},
+		"addUserTitle": "Add User",
+		"form": {
+			"username": "Username",
+			"email": "Email",
+			"phone": "Phone",
+			"password": "Password",
+			"name": "Name",
+			"dateOfBirth": "Date of Birth",
+			"nationality": "Nationality",
+			"gender": "Gender",
+			"genderMale": "Male",
+			"genderFemale": "Female",
+			"genderOther": "Other",
+			"role": "Role",
+			"roleUser": "User",
+			"roleManager": "Manager",
+			"roleAdmin": "Admin",
+			"addButton": "Add User"
+		},
+		"confirmDelete": "Are you sure you want to delete this account? This action cannot be undone."
+	},
+	"userDetails": {
+		"title": "User Details",
+		"username": "Username",
+		"email": "Email",
+		"phone": "Phone",
+		"dateOfBirth": "Date of Birth",
+		"nationality": "Nationality",
+		"gender": "Gender",
+		"role": "Role",
+		"editButton": "Edit",
+		"deleteButton": "Delete",
+		"backButton": "Back to User List",
+		"confirmDelete": "Are you sure you want to delete this account? This action cannot be undone."
+	},
+	"editUser": {
+		"title": "Edit User",
+		"form": {
+			"username": "Username",
+			"email": "Email",
+			"phone": "Phone",
+			"name": "Name",
+			"dateOfBirth": "Date of Birth",
+			"nationality": "Nationality",
+			"gender": "Gender",
+			"genderMale": "Male",
+			"genderFemale": "Female",
+			"genderOther": "Other",
+			"role": "Role",
+			"roleUser": "User",
+			"roleManager": "Manager",
+			"roleAdmin": "Admin",
+			"updateButton": "Update User",
+			"cancelButton": "Cancel"
+		}
+	}
+}

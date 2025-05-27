@@ -1,0 +1,197 @@
+<div class="text-center my-4">
+  <h1 class="declaration-title">
+    <i class="fas fa-file-alt"></i>
+    {{t 'declaration.title'}}
+  </h1>
+</div>
+
+<!-- Tabs navigation -->
+<ul class='nav nav-tabs' id='declarationTabs' role='tablist'>
+  <li class='nav-item' role='presentation'>
+    <button
+      class='nav-link active'
+      id='history-tab'
+      data-bs-toggle='tab'
+      data-bs-target='#history'
+      type='button'
+      role='tab'
+      aria-controls='history'
+      aria-selected='true'
+    >{{t 'declaration.historyTab'}}</button>
+  </li>
+  <li class='nav-item' role='presentation'>
+    <button
+      class='nav-link'
+      id='new-declaration-tab'
+      data-bs-toggle='tab'
+      data-bs-target='#new-declaration'
+      type='button'
+      role='tab'
+      aria-controls='new-declaration'
+      aria-selected='false'
+    >{{t 'declaration.newDeclarationTab'}}</button>
+  </li>
+</ul>
+
+<!-- Tabs content -->
+<div class='tab-content' id='declarationTabsContent'>
+  <!-- Tab: History -->
+  <div
+    class='tab-pane fade show active'
+    id='history'
+    role='tabpanel'
+    aria-labelledby='history-tab'
+  >
+    <h2 class='mt-4'>{{t 'declaration.historyTitle'}}</h2>
+    <table class='table table-striped'>
+      <thead>
+        <tr>
+          <th>{{t 'declaration.name'}}</th>
+          <th>{{t 'declaration.accommodation'}}</th>
+          <th>{{t 'declaration.checkIn'}}</th>
+          <th>{{t 'declaration.checkOut'}}</th>
+          <th>{{t 'declaration.status'}}</th>
+        </tr>
+      </thead>
+      <tbody id='declarationTableBody'>
+        {{#each residences}}
+          <tr>
+            <td>{{this.foreignResident.fullName}}</td>
+            <td>{{this.accommodation.name}}</td>
+            <td>{{formatDate this.check_in}}</td>
+            <td>{{#if this.check_out}}{{formatDate this.check_out}}{{else}}N/A{{/if}}</td>
+            <td>{{this.status}}</td>
+          </tr>
+        {{else}}
+          <tr>
+            <td colspan="5">Cơ sở tạm trú của bạn chưa khai báo trường hợp nào.</td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Tab: New Declaration -->
+  <div
+    class='tab-pane fade'
+    id='new-declaration'
+    role='tabpanel'
+    aria-labelledby='new-declaration-tab'
+  >
+    <h2 class='mt-4'>{{t 'declaration.newDeclarationTitle'}}</h2>
+    <form action="/declaration" method="POST">
+      <input type="hidden" name="_csrf" value="{{csrfToken}}">
+      
+      <!-- Foreign Resident Information -->
+      <div class='mb-3'>
+        <label for='fullName' class='form-label'>{{t 'declaration.fullNameLabel'}}</label>
+        <input type='text' class='form-control' id='fullName' name='fullName' placeholder="{{t 'declaration.fullNameLabel'}}" required />
+      </div>
+      <div class='mb-3'>
+        <label for='passportNumber' class='form-label'>{{t 'profile.foreignDetails.passportNumber'}}</label>
+        <input type='text' class='form-control' id='passportNumber' name='passportNumber' placeholder="{{t 'profile.foreignDetails.passportNumber'}}" required />
+      </div>
+      <div class='mb-3'>
+        <label for='visaType' class='form-label'>{{t 'profile.foreignDetails.visaType'}}</label>
+        <input type='text' class='form-control' id='visaType' name='visaType' placeholder="{{t 'profile.foreignDetails.visaType'}}" required />
+      </div>
+      <div class='mb-3'>
+        <label for='visaExpiryDate' class='form-label'>{{t 'profile.foreignDetails.visaExpiryDate'}}</label>
+        <input type='date' class='form-control' id='visaExpiryDate' name='visaExpiryDate' required />
+      </div>
+      <div class='mb-3'>
+        <label for='address' class='form-label'>{{t 'register.address'}}</label>
+        <input type='text' class='form-control' id='address' name='address' placeholder="{{t 'register.address'}}" required />
+      </div>
+      <div class='mb-3'>
+        <label for='dateOfBirth' class='form-label'>{{t 'editUser.form.dateOfBirth'}}</label>
+        <input type='date' class='form-control' id='dateOfBirth' name='dateOfBirth' required />
+      </div>
+      <div class='mb-3'>
+        <label for='nationality' class='form-label'>{{t 'profile.foreignDetails.nationality'}}</label>
+        <input type='text' class='form-control' id='nationality' name='nationality' placeholder="{{t 'profile.foreignDetails.nationality'}}" required />
+      </div>
+
+      <!-- Declaration Information -->
+      <div class='mb-3'>
+        <label for='check_in' class='form-label'>{{t 'declaration.checkInLabel'}}</label>
+        <input type='date' class='form-control' id='check_in' name='check_in' required />
+      </div>
+      <div class='mb-3'>
+        <label for='check_out' class='form-label'>{{t 'declaration.checkOutLabel'}}</label>
+        <input type='date' class='form-control' id='check_out' name='check_out' required />
+      </div>
+      <div class='mb-3'>
+        <label for='reason' class='form-label'>{{t 'declaration.reasonLabel'}}</label>
+        <textarea class='form-control' id='reason' name='reason' rows='3' placeholder="{{t 'declaration.reasonLabel'}}" required></textarea>
+      </div>
+      <button type='submit' class='btn btn-primary'>{{t 'declaration.submitButton'}}</button>
+    </form>
+  </div>
+</div>
+
+<!-- Modal for detailed view -->
+<div class="modal fade" id="declarationDetailModal" tabindex="-1" aria-labelledby="declarationDetailModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="declarationDetailModalLabel">{{t 'declaration.detailTitle'}}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" id="declarationDetailContent">
+        <!-- Detailed information will be populated here -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{t 'declaration.closeButton'}}</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Add this modal for success notification -->
+<div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="successModalLabel">Success</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Declaration added successfully!
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Include the external script -->
+<script src="/js/declaration.js"></script>
+
+<div class="container mt-4">
+  {{#if success_msg}}
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+      {{{success_msg}}}
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+  {{/if}}
+  {{#if error_msg}}
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+      {{{error_msg}}}
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+  {{/if}}
+
+  {{#if residences.length}}
+    {{#each residences}}
+      <div class="card mb-3">
+        <div class="card-body">
+          <h5 class="card-title">{{this.foreignResident.fullName}}</h5>
+          <p class="card-text">{{t 'declaration.checkIn'}}: {{formatDate this.check_in}}</p>
+          <p class="card-text">{{t 'declaration.checkOut'}}: {{formatDate this.check_out}}</p>
+          <p class="card-text">{{t 'declaration.status'}}: {{this.status}}</p>
+        </div>
+      </div>
+    {{/each}}
+  {{else}}
+    <p>{{t 'declaration.noRecords'}}</p>
+  {{/if}}
+</div>

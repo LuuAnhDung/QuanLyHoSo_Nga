@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Quản lý hồ sơ</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+  <div class="container py-4">
+    <h2 class="mb-4">Quản lý hồ sơ</h2>
+
+    {{#if success_msg}}
+      <div class="alert alert-success">{{success_msg}}</div>
+    {{/if}}
+    {{#if error_msg}}
+      <div class="alert alert-danger">{{error_msg}}</div>
+    {{/if}}
+
+    <form id="case-form" action="/case/add" method="POST" enctype="multipart/form-data" class="mb-4">
+      <input type="hidden" name="id" id="case-id">
+
+      <div class="row g-3">
+        <div class="col-md-4">
+          <label class="form-label">Mã hồ sơ</label>
+          <input type="text" name="case_code" id="case_code" class="form-control" required>
+        </div>
+        <div class="col-md-8">
+          <label class="form-label">Trích yếu hồ sơ</label>
+          <input type="text" name="summary" id="summary" class="form-control" required>
+        </div>
+        <div class="col-md-4">
+          <label class="form-label">Loại hồ sơ</label>
+          <select name="file_type_id" id="file_type_id" class="form-select" required>
+            {{#each fileTypes}}
+              <option value="{{this._id}}">{{this.name}}</option>
+            {{/each}}
+          </select>
+        </div>
+        <div class="col-md-4">
+          <label class="form-label">Ngày đăng ký</label>
+          <input type="date" name="registered_at" id="registered_at" class="form-control">
+        </div>
+        <div class="col-md-4">
+          <label class="form-label">Ngày kết thúc</label>
+          <input type="date" name="ended_at" id="ended_at" class="form-control">
+        </div>
+        <div class="col-md-4">
+          <label class="form-label">Ngày nộp lưu</label>
+          <input type="date" name="archived_at" id="archived_at" class="form-control">
+        </div>
+        <div class="col-md-4">
+          <label class="form-label">Ngày chuyển</label>
+          <input type="date" name="transferred_at" id="transferred_at" class="form-control">
+        </div>
+        <div class="col-md-4">
+          <label class="form-label">Cán bộ đăng ký</label>
+          <select name="registrar_id" id="registrar_id" class="form-select" required>
+            {{#each users}}
+              <option value="{{this._id}}">{{this.username}}</option>
+            {{/each}}
+          </select>
+        </div>
+        <div class="col-md-4">
+          <label class="form-label">Cán bộ quản lý</label>
+          <select name="manager_id" id="manager_id" class="form-select" required>
+            {{#each users}}
+              <option value="{{this._id}}">{{this.username}}</option>
+            {{/each}}
+          </select>
+        </div>
+        <div class="col-md-4">
+          <label class="form-label">Trạng thái</label>
+          <select name="status" id="status" class="form-select" required>
+            <option value="Đang chờ xử lý">Đang chờ xử lý</option>
+            <option value="Đã phê duyệt">Đã phê duyệt</option>
+            <option value="Bị từ chối">Bị từ chối</option>
+          </select>
+        </div>
+        <div class="col-md-8">
+          <label class="form-label">Ghi chú</label>
+          <input type="text" name="note" id="note" class="form-control">
+        </div>
+        {{!-- <div class="col-md-4">
+          <label class="form-label">Điểm chấm</label>
+          <input type="number" name="score" id="score" class="form-control" min="0" max="100">
+        </div> --}}
+        <div class="col-md-12">
+          <label class="form-label">File đính kèm</label>
+          <input type="file" name="attachments" id="attachments" class="form-control" multiple>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-success mt-3">Lưu hồ sơ</button>
+      <button type="button" class="btn btn-primary mt-3" id="btn-edit" style="display: none;">Sửa hồ sơ</button>
+      <button type="button" class="btn btn-secondary mt-3" id="btn-clear">Hủy</button>
+    </form>
+
+    <hr>
+
+    <h4>Danh sách hồ sơ</h4>
+    <table class="table table-bordered table-hover">
+      <thead class="table-dark">
+        <tr>
+          {{!-- <th>ID</th> --}}
+          <th>Số hồ sơ</th><th>Trích yếu hồ sơ</th><th>Loại</th><th>Cán bộ đăng ký</th><th>Cán bộ quản lý</th><th>Trạng thái</th><th>Ghi chú</th><th>Ngày đăng ký</th><th>Ngày kết thúc</th><th>Hành động</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{!-- render động qua JS --}}
+      </tbody>
+    </table>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="/js/case.js"></script>
+</body>
+</html>

@@ -1,0 +1,151 @@
+{{#if success_msg}}
+  <div class="alert alert-success alert-dismissible fade show" role="alert">
+    {{{success_msg}}}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+{{/if}}
+{{#if error_msg}}
+  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    {{{error_msg}}}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+{{/if}}
+
+<h1 class='text-center mb-4'>{{t 'dashboard.title'}}</h1>
+
+<div class='container'>
+  <div class='row justify-content-center'>
+    {{#if (eq user.role 'user')}}
+    <div class='col-md-4 mb-4'>
+      <div class='card shadow-sm'>
+        <div class='card-body'>
+          <h5 class='card-title'><i class="fas fa-chart-line"></i> {{t 'dashboard.manageCasesUser.title'}}</h5>
+          <p class='card-text'>{{t 'dashboard.manageCasesUser.description'}}</p>
+          <a href='/case/view' class='btn btn-success'>{{t 'dashboard.manageCasesUser.button'}}</a>
+        </div>
+      </div>
+    </div>
+    {{/if}}
+    {{#if (eq user.role 'user')}}
+    <div class='col-md-4 mb-4'>
+      <div class='card shadow-sm'>
+        <div class='card-body'>
+          <h5 class='card-title'><i class="fas fa-chart-line"></i> {{t 'dashboard.manageCasetransitionUser.title'}}</h5>
+          <p class='card-text'>{{t 'dashboard.manageCasetransitionUser.description'}}</p>
+          <a href='/casetransition/user' class='btn btn-success'>{{t 'dashboard.manageCasetransitionUser.button'}}</a>
+        </div>
+      </div>
+    </div>
+    {{/if}}
+    {{#if (eq user.role 'user')}}
+    <div class='col-md-4 mb-4'>
+      <div class='card shadow-sm'>
+        <div class='card-body'>
+          <h5 class='card-title'><i class="fas fa-chart-line"></i> {{t 'dashboard.manageScoreUser.title'}}</h5>
+          <p class='card-text'>{{t 'dashboard.manageScoreUser.description'}}</p>
+          <a href='/score/user' class='btn btn-success'>{{t 'dashboard.manageScoreUser.button'}}</a>
+        </div>
+      </div>
+    </div>
+    {{/if}}
+    {{!-- {{#if (or (eq user.role 'admin') (eq user.role 'manager'))}} --}}
+    {{#if (eq user.role 'manager')}}
+    <div class='col-md-4 mb-4'>
+      <div class='card shadow-sm'>
+        <div class='card-body'>
+          <h5 class='card-title'><i class="fas fa-chart-line"></i> {{t 'dashboard.manageCases.title'}}</h5>
+          <p class='card-text'>{{t 'dashboard.manageCases.description'}}</p>
+          <a href='/case' class='btn btn-success'>{{t 'dashboard.manageCases.button'}}</a>
+        </div>
+      </div>
+    </div>
+    {{/if}}
+    {{#if (eq user.role 'manager')}}
+    <div class='col-md-4 mb-4'>
+      <div class='card shadow-sm'>
+        <div class='card-body'>
+          <h5 class='card-title'><i class="fas fa-chart-line"></i> {{t 'dashboard.manageCasetransition.title'}}</h5>
+          <p class='card-text'>{{t 'dashboard.manageCasetransition.description'}}</p>
+          <a href='/casetransition' class='btn btn-success'>{{t 'dashboard.manageCasetransition.button'}}</a>
+        </div>
+      </div>
+    </div>
+    {{/if}}
+    {{!-- {{#if (or (eq user.role 'admin') (eq user.role 'manager'))}} --}}
+    {{#if (eq user.role 'manager')}}
+    <div class='col-md-4 mb-4'>
+      <div class='card shadow-sm'>
+        <div class='card-body'>
+          <h5 class='card-title'><i class="fas fa-chart-line"></i> {{t 'dashboard.manageScore.title'}}</h5>
+          <p class='card-text'>{{t 'dashboard.manageScore.description'}}</p>
+          <a href='/score' class='btn btn-success'>{{t 'dashboard.manageScore.button'}}</a>
+        </div>
+      </div>
+    </div>
+    {{/if}}
+    {{!-- {{#if (or (eq user.role 'admin') (eq user.role 'manager'))}} --}}
+    {{!-- {{#if (or (eq user.role 'admin') (eq user.role 'manager'))}}
+    <div class='col-md-4 mb-4'>
+      <div class='card shadow-sm'>
+        <div class='card-body'>
+          <h5 class='card-title'><i class="fas fa-chart-line"></i> {{t 'dashboard.generateReports.title'}}</h5>
+          <p class='card-text'>{{t 'dashboard.generateReports.description'}}</p>
+          <a href='/admin/reports' class='btn btn-success'>{{t 'dashboard.generateReports.button'}}</a>
+        </div>
+      </div>
+    </div>
+    {{/if}} --}}
+    {{#if (or (eq user.role 'admin') (eq user.role 'manager'))}}
+      <div class='col-md-4 mb-4'>
+        <div class='card shadow-sm'>
+          <div class='card-body'>
+            <h5 class='card-title'><i class="fas fa-chart-line"></i> {{t 'dashboard.generateReports.title'}}</h5>
+            <p class='card-text'>{{t 'dashboard.generateReports.description'}}</p>
+            <a href='/admin/reports/export' class='btn btn-success'>
+              {{t 'dashboard.generateReports.button'}}
+            </a>
+          </div>
+        </div>
+      </div>
+    {{/if}}
+    {{#if (eq user.role 'admin')}}
+    <div class='col-md-4 mb-4'>
+      <div class='card shadow-sm'>
+        <div class='card-body'>
+          <h5 class='card-title'>{{t 'dashboard.manageUsers.title'}}</h5>
+          <p class='card-text'>{{t 'dashboard.manageUsers.description'}}</p>
+          <a href='/admin/users' class='btn btn-warning'>{{t 'dashboard.manageUsers.button'}}</a>
+        </div>
+      </div>
+    </div>
+    {{/if}}
+    {{!-- {{#if (eq user.role 'manager')}}
+    <div class='col-md-4 mb-4'>
+      <div class='card shadow-sm'>
+        <div class='card-body'>
+          <h5 class='card-title'><i class="fas fa-hotel"></i> {{t 'dashboard.manageAccommodations.title'}}</h5>
+          <p class='card-text'>{{t 'dashboard.manageAccommodations.description'}}</p>
+          <a href='/accommodations/manage' class='btn btn-info'>{{t 'dashboard.manageAccommodations.button'}}</a>
+        </div>
+      </div>
+    </div>
+    {{/if}} --}}
+  </div>
+</div>
+
+<!-- Pie Chart -->
+<div class='row mt-5 mb-5 justify-content-center'>
+  <div class='col-md-6'>
+    <canvas id='residencePieChart'></canvas>
+  </div>
+</div>
+
+<!-- Include Chart.js -->
+<script src='https://cdn.jsdelivr.net/npm/chart.js'></script>
+<script src='/js/dashboard.js'></script>
+
+<style>
+#residencePieChart {
+  border: 1px solid red;
+}
+</style>

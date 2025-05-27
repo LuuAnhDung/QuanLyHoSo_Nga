@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Quản lý diễn biến hồ sơ</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container py-4">
+  <h2 class="mb-4">Quản lý diễn biến hồ sơ</h2>
+
+  {{#if success_msg}}<div class="alert alert-success">{{success_msg}}</div>{{/if}}
+  {{#if error_msg}}<div class="alert alert-danger">{{error_msg}}</div>{{/if}}
+
+  <form id="transition-form" action="/casetransition/create" method="POST">
+    <input type="hidden" name="id" id="transition-id">
+
+    <div class="row mb-3">
+      <div class="col-md-4">
+        <label class="form-label">Hồ sơ</label>
+        <select name="case_id" id="case_id" class="form-select" required>
+          {{#each cases}}
+            <option value="{{this._id}}">{{this.case_code}}</option>
+          {{/each}}
+        </select>
+      </div>
+      {{!-- <div class="col-md-4">
+        <label class="form-label">Loại chuyển</label>
+        <input type="text" name="transition_type" id="transition_type" class="form-control" required>
+      </div> --}}
+      <div class="col-md-4">
+       <label class="form-label">Loại chuyển</label>
+         <select name="transition_type" id="transition_type" class="form-select" required>
+         <option value="" disabled {{#unless transition_type}}selected{{/unless}}>Chọn loại chuyển</option>
+         <option value="Chuyển loại"    {{#if (eq transition_type 'Chuyển loại')}}selected{{/if}}>Chuyển loại</option>
+         <option value="Bàn giao"        {{#if (eq transition_type 'Bàn giao')}}selected{{/if}}>Bàn giao</option>
+         <option value="Cập nhật"       {{#if (eq transition_type 'Cập nhật')}}selected{{/if}}>Cập nhật</option>
+       </select>
+     </div>
+      <div class="col-md-4">
+        <label class="form-label">Ngày chuyển</label>
+        <input type="date" name="transitioned_at" id="transitioned_at" class="form-control">
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <div class="col-md-4">
+        <label class="form-label">Người gửi</label>
+        <input type="text" name="sender_name" id="sender_name" class="form-control" required>
+      </div>
+      <div class="col-md-4">
+        <label class="form-label">Đơn vị gửi</label>
+        <select name="sender_unit_id" id="sender_unit_id" class="form-select" required>
+          {{#each units}}
+            <option value="{{this._id}}">{{this.name}}</option>
+          {{/each}}
+        </select>
+      </div>
+      {{!-- <div class="col-md-4">
+        <label class="form-label">Cán bộ quản lý</label>
+        <select name="manager_id" id="manager_id" class="form-select" required>
+          {{#each users}}
+            <option value="{{this._id}}">{{this.username}}</option>
+          {{/each}}
+        </select>
+      </div> --}}
+      <div class="col-md-4">
+        <label class="form-label">Cán bộ quản lý</label>
+        <select name="manager_id" id="manager_id" class="form-select">
+          <option value="">-- Không chọn --</option>
+          {{#each users}}
+            <option value="{{this._id}}">{{this.username}}</option>
+          {{/each}}
+        </select>
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <div class="col-md-4">
+        <label class="form-label">Người nhận</label>
+        <input type="text" name="receiver_name" id="receiver_name" class="form-control">
+      </div>
+      <div class="col-md-4">
+        <label class="form-label">Đơn vị nhận</label>
+        <select name="receiver_unit_id" id="receiver_unit_id" class="form-select">
+          <option value="">-- Không chọn --</option>
+          {{#each units}}
+            <option value="{{this._id}}">{{this.name}}</option>
+          {{/each}}
+        </select>
+      </div>
+      <div class="col-md-4">
+        <label class="form-label">Ghi chú</label>
+        <input type="text" name="note" id="note" class="form-control">
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-success">Lưu</button>
+    <button type="button" class="btn btn-secondary" onclick="clearForm()">Hủy</button>
+  </form>
+
+  <hr>
+
+  <h4 class="mt-4">Danh sách diễn biến hồ sơ</h4>
+
+  <table class="table table-bordered">
+    <thead class="table-dark">
+      <tr>
+        <th>Hồ sơ</th>
+        <th>Loại</th>
+        <th>Người gửi</th>
+        <th>Người nhận</th>
+        <th>Đơn vị gửi</th>
+        <th>Đơn vị nhận</th>
+        <th>Ngày</th>
+        <th>Cán bộ quản lý</th>
+        <th>Ghi chú</th>
+        <th>Hành động</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each transitions}}
+        <tr>
+          <td>{{this.case_id.case_code}}</td>
+          <td>{{this.transition_type}}</td>
+          <td>{{this.sender_name}}</td>
+          <td>{{this.receiver_name}}</td>
+          <td>{{this.sender_unit_id.name}}</td>
+          <td>{{this.receiver_unit_id.name}}</td>
+          <td>{{formatDate this.transitioned_at}}</td>
+          <td>{{this.manager_id.username}}</td>
+          <td>{{this.note}}</td>
+          <td>
+            {{!-- <button class="btn btn-sm btn-warning" onclick='editTransition({{{json this}}})'>Sửa</button> --}}
+            <button
+              type="button"
+              class="btn btn-sm btn-warning btn-edit-transition"
+              data-transition='{{{json this}}}'>
+              Sửa
+            </button>
+            <form action="/casetransition/delete/{{this._id}}" method="POST" style="display:inline;" onsubmit="return confirm('Xóa dòng này?');">
+              <button type="submit" class="btn btn-sm btn-danger">Xóa</button>
+            </form>
+          </td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="/js/casetransition.js"></script>
+
+{{!-- <script>
+  function editTransition(data) {
+    document.getElementById('transition-id').value = data._id;
+    document.getElementById('transition-form').action = '/casetransition/edit/' + data._id;
+
+    document.getElementById('case_id').value = data.case_id._id;
+    document.getElementById('transition_type').value = data.transition_type;
+    document.getElementById('transitioned_at').value = data.transitioned_at?.substring(0, 10);
+    document.getElementById('sender_name').value = data.sender_name;
+    document.getElementById('receiver_name').value = data.receiver_name;
+    document.getElementById('sender_unit_id').value = data.sender_unit_id?._id || '';
+    document.getElementById('receiver_unit_id').value = data.receiver_unit_id?._id || '';
+    document.getElementById('manager_id').value = data.manager_id?._id || '';
+    document.getElementById('note').value = data.note || '';
+  }
+
+  function clearForm() {
+    document.getElementById('transition-form').reset();
+    document.getElementById('transition-form').action = '/casetransition';
+    document.getElementById('transition-id').value = '';
+  }
+</script> --}}
+
+{{!-- <script>
+  function editTransition(data) {
+    const form = document.getElementById('transition-form');
+
+    // điền ID để controller biết update
+    document.getElementById('transition-id').value = data._id;
+
+    // đổi action thành route edit
+    form.action = '/casetransition/edit/' + data._id;
+
+    // đổ đầy các field
+    document.getElementById('case_id').value            = data.case_id._id;
+    document.getElementById('transition_type').value    = data.transition_type;
+    document.getElementById('transitioned_at').value    = data.transitioned_at?.substr(0,10) || '';
+    document.getElementById('sender_name').value        = data.sender_name;
+    document.getElementById('sender_unit_id').value     = data.sender_unit_id?._id || '';
+    document.getElementById('receiver_name').value      = data.receiver_name;
+    document.getElementById('receiver_unit_id').value   = data.receiver_unit_id?._id || '';
+    document.getElementById('manager_id').value         = data.manager_id?._id || '';
+    document.getElementById('note').value               = data.note;
+  }
+
+  function clearForm() {
+    const form = document.getElementById('transition-form');
+    form.reset();
+    // quay về route tạo mới
+    form.action = '/casetransition';
+    document.getElementById('transition-id').value = '';
+  }
+</script> --}}
+
+</body>
+</html>
